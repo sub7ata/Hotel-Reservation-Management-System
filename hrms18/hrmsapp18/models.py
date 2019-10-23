@@ -8,22 +8,25 @@ class Guest(models.Model):
     name = models.CharField(max_length=200)
     gender=models.CharField(max_length=200)
 
-
     def __str__(self):
         return self.name
+
+
 class Manager(models.Model):
     name = models.CharField(max_length=200)
-    # Id = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     guest=models.ForeignKey(Guest, on_delete=models.CASCADE)
-    gender=models.CharField(max_length=200)
+    gender=models.CharField(default="Male", max_length=10)
 
     def __str__(self):
         return self.name
+
 
 class Hotel(models.Model):
     name = models.CharField(max_length=200)
     manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
     city= models.CharField(max_length=200)
+    # id=models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -108,6 +111,13 @@ def  RType(sender, instance, created, **kwargs):
     if created:
         obj.is_available = False
         obj.save()
+    # if obj.is_available ==False:
+    #     if obj.checkin_time>= checkin_time and obj.checkin_time<= checkout_time:
+    #         return  "room is not available in the selected dates"
+    #     if obj.checkin_time< checkin_time and obj.checkout_time> checkout_time:
+    #         return
+
+
 
 # @receiver(post_save,sender=Guest)
 # def be_active(sender,instance,active,**kwargs):

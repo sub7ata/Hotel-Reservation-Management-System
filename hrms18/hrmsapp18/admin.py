@@ -56,13 +56,16 @@ class BookingAdminForm(forms.ModelForm):
         if name1.name > 1:
             raise forms.ValidationError(' u literally cannot make another booking now', code='error')
         return self.cleaned_data
-
+        if any(Booking.objects.filter(room=rooms, checkin_date__gte=checkin_date,
+                                     checkout_date__lte=checkout_date)):
+            raise forms.ValidationError("Can't book this room , this is already booked", code='error')
+            return self.cleaned_data
 
     def save(self, commit=True):
         return super(BookingAdminForm,self).save(commit=commit)
 
 class ManagerAdmin(admin.ModelAdmin):
-    list_display = ('name','gender',)
+    list_display = ('name','gender','id','guest',)
     form = ManagerAdminForm
 
 admin.site.register(Manager,ManagerAdmin)
@@ -74,7 +77,7 @@ class GuestAdmin(admin.ModelAdmin):
 admin.site.register(Guest,GuestAdmin)
 
 class HotelAdmin(admin.ModelAdmin):
-    list_display = ('name','city',)
+    list_display = ('name','city','id')
     form = HotelAdminForm
 admin.site.register(Hotel,HotelAdmin)
 
