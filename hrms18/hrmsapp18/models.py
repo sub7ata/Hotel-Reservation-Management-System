@@ -6,10 +6,11 @@ from django.db.models.signals import post_save
 
 class Guest(models.Model):
     name = models.CharField(max_length=200)
-    gender=models.CharField(max_length=200)
+    age=models.IntegerField(default=20)
 
     def __str__(self):
         return self.name
+
 
 
 class Manager(models.Model):
@@ -17,7 +18,7 @@ class Manager(models.Model):
     id = models.IntegerField(primary_key=True)
     guest=models.ForeignKey(Guest, on_delete=models.CASCADE)
     gender=models.CharField(default="Male", max_length=10)
-
+    # staff=models.ForeignKey(Staff,null=True,on_delete=models.CASCADE)
     def __str__(self):
         return self.name
 

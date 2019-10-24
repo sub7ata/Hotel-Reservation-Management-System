@@ -15,7 +15,7 @@ class ManagerAdminForm(forms.ModelForm):
 
 
     def save(self,commit=True):
-        return  super(ManagerAdminForm,self).save(commit==commit)
+        return  super(ManagerAdminForm,self).save(commit=commit)
 
 class GuestAdminForm(forms.ModelForm):
     def __init__(self):
@@ -71,7 +71,7 @@ class ManagerAdmin(admin.ModelAdmin):
 admin.site.register(Manager,ManagerAdmin)
 
 class GuestAdmin(admin.ModelAdmin):
-    list_display = ('name','gender',)
+    list_display = ('name','age',)
     form = GuestAdminForm
 
 admin.site.register(Guest,GuestAdmin)
