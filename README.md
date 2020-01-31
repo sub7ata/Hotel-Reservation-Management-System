@@ -6,7 +6,7 @@ In this app services like multiple Bookings in certain hotels are carried out. I
  1. Room is booked by a Customer with an option to vacate on the desired date.
  2. If a new customer is trying to book a specific room which is already booked by some other customer then the new customer will be alerted with an error and the room will not be available until the existing customer vacates it.
  3. I have implemented the concept of
-   ##### post_save
+   #####     post_save
     so that as soon the room is vacated and the room is shown available for the upcoming booking customers.
  4. A customer can book only one room at a time.
  
