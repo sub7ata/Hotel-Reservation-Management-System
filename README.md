@@ -1,6 +1,6 @@
 # Hotel Reservation Management System 
 
-In this app services like multiple Bookings in a certain hotels are carried. In each hotel there are multiple tasks about specific rooms. So basically a customer can book a room in the respected hotel.
+In this app services like multiple Bookings in certain hotels are carried out. In each hotel there are multiple tasks about specific rooms. So basically a customer can book a room in the respected hotel.
 
 ###Processes and services:
  1. Room is booked by a Customer with an option to vacate on the desired date.
