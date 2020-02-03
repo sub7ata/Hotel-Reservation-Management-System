@@ -54,6 +54,11 @@ django-jsonfield==1.4.0
  ```
  python3 manage.py runserver
  ```
- 
+the app runs in the development mode.
+Open http://127.0.0.1:8000/admin to view it in the browser.
+
+The page will reload if you make edits.
+You will also see any lint errors in the console.
+
  
  
